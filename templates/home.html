@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CrawlMeThere</title>
+</head>
+<style>
+    #map {
+        height: 100%;
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<script>
+    function initMap() {
+        // Get user's location and draw the map
+        navigator.geolocation.getCurrentPosition(function (location) {
+            var lng = location.coords.longitude;
+            var lat = location.coords.latitude;
+            map(lat, lng)
+        });
+
+        // Create a map object and specify the DOM element for display.
+        function map(lat, lng) {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: lat, lng: lng},
+                scrollwheel: true,
+                zoom: 12
+            });
+        }
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNi5gcumwXVhXk7e-RPgxGM3N8Zvt61io&callback=initMap"></script>
+<body>
+<div id="map"></div>
+</body>
+</html>
